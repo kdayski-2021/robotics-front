@@ -1,4 +1,4 @@
-# kick-burning-jackpot
+# robotics-front
 
 ## Project setup
 ```
