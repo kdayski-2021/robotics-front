@@ -1,24 +1,70 @@
 # robotics-front
 
-## Project setup
-```
-npm install
-```
+Фронтенд-приложение на Vue 2 для Web3-операций: подключение кошелька, просмотр цены газа, создание кошелька, проверка баланса и отправка/стейкинг токенов через смарт-контракт.
 
-### Compiles and hot-reloads for development
-```
+## Что умеет
+
+- Подключение кошелька через `Web3Modal` (`eth-provider`, `Authereum`)
+- Получение текущих цен газа через API Etherscan
+- Создание локального кошелька
+- Просмотр ETH-баланса адреса
+- Перевод токенов/ETH
+- `deposit` и `withdraw` в контракт (по индексам пулов из `farms.json`)
+
+## Технологии
+
+- Vue 2 + Vue CLI 4
+- Vuetify
+- Vue Router / Vuex
+- Web3.js / Web3Modal
+- Axios
+- Sass
+
+## Требования
+
+- Node.js 14+ (рекомендуется LTS)
+- npm 6+
+
+## Быстрый старт
+
+```bash
+npm install
 npm run serve
 ```
 
-### Compiles and minifies for production
-```
+После запуска приложение будет доступно в браузере по адресу, который выведет Vue CLI (обычно `http://localhost:8080`).
+
+## Скрипты
+
+- `npm run serve` — запуск dev-сервера
+- `npm run build` — production-сборка
+- `npm run lint` — проверка ESLint
+
+## Конфигурация
+
+Основные параметры находятся в файлах:
+
+- `src/config/default.json`
+  - `gasPriceApi` — URL API для получения цен газа
+  - `stackAddress` — адрес смарт-контракта
+  - `stackAbi` — ABI контракта
+- `src/config/farms.json`
+  - соответствие названий фарм-пулов их индексам в контракте
+
+Перед деплоем рекомендуется вынести чувствительные параметры (например, API-ключи) в переменные окружения.
+
+## Структура проекта
+
+- `src/components/ui` — UI-компоненты (подключение кошелька)
+- `src/components/gas` — компоненты для работы с ценой газа
+- `src/components/wallet` — операции с кошельком и переводами
+- `src/api/bia.js` — Web3-логика и вызовы контракта
+- `src/config` — адреса, ABI и конфиги пулов
+
+## Сборка для production
+
+```bash
 npm run build
 ```
 
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+Готовые файлы появятся в директории `dist`.
